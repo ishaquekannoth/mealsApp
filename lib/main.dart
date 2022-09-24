@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:udemy/screens/category_meals_screen.dart';
 import 'package:udemy/screens/category_screen.dart';
+import 'package:udemy/screens/meal_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,8 +30,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         CategoryMealsScreen.routeName: (context) => const CategoryMealsScreen(),
-        '/': (context) => const CategoryScreen()
+        '/': (context) => const CategoryScreen(),
+        MealDetailsScreen.routeName: (context) => const MealDetailsScreen()
       },
+      onUnknownRoute: (settings) => MaterialPageRoute(
+        builder: (context) => const CategoryScreen(),
+      ),
     );
   }
 }

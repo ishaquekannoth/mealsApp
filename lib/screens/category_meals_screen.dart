@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy/dummy_data.dart';
+import 'package:udemy/widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   const CategoryMealsScreen({super.key});
@@ -27,7 +28,7 @@ class CategoryMealsScreen extends StatelessWidget {
         body: ListView.builder(
             itemCount: categoryMeals.length,
             itemBuilder: (context, index) {
-              return (Text(categoryMeals[index].title));
+              return (MealItem(title: categoryMeals[index].title, imageUrl: categoryMeals[index].imageUrl, affordability: categoryMeals[index].affordability, complexity: categoryMeals[index].complexity,duration:categoryMeals[index].duration,id: categoryMeals[index].id,));
             }));
   }
 }
