@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:udemy/screens/category_screen.dart';
 import 'package:udemy/screens/favourite_screen.dart';
+import 'package:udemy/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -26,6 +27,9 @@ class _TabsScreenState extends State<TabsScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+          drawer: Drawer(
+             child:MainDrawer() ,
+          ),
           appBar: AppBar(
             centerTitle: true,
             title: Text(pages[selectedPagesIndex]['title']),

@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:udemy/model/meal.dart';
 import 'package:udemy/screens/meal_details_screen.dart';
@@ -9,6 +11,8 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final void Function(String) removeItem;
+
   const MealItem(
       {required this.title,
       required this.id,
@@ -16,6 +20,7 @@ class MealItem extends StatelessWidget {
       required this.imageUrl,
       required this.affordability,
       required this.complexity,
+      required this.removeItem,
       super.key});
 
   String get complexityText {
@@ -41,7 +46,13 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailsScreen.routeName, arguments: id);
+    Navigator.of(context)
+        .pushNamed(MealDetailsScreen.routeName, arguments: id)
+        .then((result) {
+      if (result != null) {
+        removeItem(result.toString());
+      }
+    });
   }
 
   @override
